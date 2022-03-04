@@ -22,12 +22,12 @@ public class ProductServiceImplementaion implements ProductService
 
 	public List<Product> getAllProduct() {
 		// TODO Auto-generated method stub
-		return null;
+		return productDao.getAllProduct();
 	}
 
 	public void deleteProduct(int id) {
 		// TODO Auto-generated method stub
-		
+		productDao.deleteProduct(id);
 	}
 
 }

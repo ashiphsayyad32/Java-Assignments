@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -66,28 +67,26 @@ public class ProductDAOImplemetation implements ProductDAO
 
 
 	public List<Product> getAllProduct() {
-		int id;
-		String name;
-		double price;
-		List<Product> productList = new ArrayList<Product>();
+		List<Product> list = new ArrayList<Product>();
 		try {
 			
 			ps = conn.prepareStatement("select * from product");
 			rs = ps.executeQuery();
-			
+		
 			while(rs.next()) {
-				id=rs.getInt(1);
-				name = rs.getString(2);
-				price = rs.getDouble(3);
-				productList.add(new Product(id, name, price));
-				System.out.println(productList+"\n");
+//				System.out.println(rs.getString(2)+" "+rs.getDouble(3));
+				Product product = new Product();
+				product.setId(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setPrice(rs.getDouble(3));
+				list.add(product);
 			}
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-		return productList;
+		return list;
 	}
 
 	public void deleteProduct(int id) {
@@ -98,9 +97,6 @@ public class ProductDAOImplemetation implements ProductDAO
 			result=ps.executeUpdate();
 			if(result>0) {
 				System.out.println("Product Deleted");
-			}
-			else {
-				System.out.println("Failed to delete product");
 			}
 			
 		} catch (SQLException e) {
