@@ -12,7 +12,7 @@ public class JDBCUtility {
 		
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demodb","root","Ashiph3283#");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demodb","root","root");
 			System.out.println("Connected to Database!!!");
 		}
 		catch (Exception e) {
