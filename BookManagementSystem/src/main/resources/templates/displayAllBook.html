@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>All Books</title>
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+
+	<div class="container text-center my-5">
+		<h3>
+			<i>Book List</i>
+		</h3>
+		<div class="container my-5">
+			<form>
+				<button type="button" class="btn btn-warning">
+					<a th:href="@{/addBook}">Add Book</a>
+				</button>
+				<button type="button" class="btn btn-warning">
+					<a th:href="@{/getAllBooks}">Show All Book</a>
+				</button>
+			</form>
+		</div>
+
+		<div class="container my-5">
+			<form action="#" th:action="@{/getBook}" method="post"
+				th:object="${book}">
+
+				<input type="text" name="id">
+				<button type="submit" class="btn btn-success">get Book</button>
+			</form>
+		</div>
+
+
+		<table border="1" class="table table-dark table-striped">
+
+			<tr class="bg-primary">
+				<th>Book Id</th>
+				<th>Book Name</th>
+				<th>Author</th>
+				<th>Publisher</th>
+				<th></th>
+			</tr>
+			<tr th:each="book: ${bookList}">
+				<td th:text="${book.id}" />
+				<td th:text="${book.title}" />
+				<td th:text="${book.author}" />
+				<td th:text="${book.publisher}" />
+				<td><button type="button" class="btn btn-warning">
+						<a th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
+					</button>
+					<button type="button" class="btn btn-danger">
+						<a th:href="@{/deleteBook/{id}(id=${book.id})}">Delete</a>
+					</button></td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>

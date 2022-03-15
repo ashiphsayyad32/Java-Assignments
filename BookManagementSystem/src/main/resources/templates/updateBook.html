@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style>
+	.cont{
+		width: 250px;
+		margin-left: 250px;
+	}
+</style>
+
+</head>
+<body>
+
+	<div align="center" class="cont">
+    <h1>Add Employee</h1>
+    <form action="#" th:action="@{/updateBook}" method="post" th:object="${book}">
+        <label>Book Id:</label>
+        <input type="number" th:field="*{id}" /><br/>
+ 		<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span><br>
+ 		<br/><br/>
+ 
+        <label>Book Title:</label>
+        <input type="text" th:field="*{title}" /><br/>
+ 		<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span><br>
+ 		<br/><br/>
+ 		
+        <label>Author:</label>
+        <input type="text" th:field="*{author}" /><br/>
+ 		<span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span><br>
+ 		
+ 		<label>Publisher:</label>
+        <input type="text" th:field="*{publisher}" /><br/>
+ 		<span th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></span><br>
+        
+ 
+        <button type="submit">Add Book</button>    
+    </form>
+</div>
+
+</body>
+</html>
