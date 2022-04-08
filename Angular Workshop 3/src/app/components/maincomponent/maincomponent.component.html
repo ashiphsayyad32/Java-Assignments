@@ -1,0 +1,54 @@
+
+<div>
+      <!--Event binding demo -->
+    <button (click)="sayHello()" class="btn btn-success my-5 mx-5">Click Here</button>
+    <br>
+    <br>
+     <!--Two way binding demo -->
+    <input type="text" [(ngModel)]="initialValue" />
+    <br>
+    <h1>{{initialValue}}</h1>
+
+    <br>
+    <br>
+
+    <!--Ngif Demo -->
+    <p class="display-5" *ngIf="showMe; then thenBlock else elseBlock1">
+        value is true
+    </p>
+
+    <ng-template #elseBlock1>
+        <p  class="display-5">Else Block</p>
+    </ng-template>
+
+    <ng-template #thenBlock>
+            <p  class="display-5">Then Block</p>
+        </ng-template>
+
+        <p class="display-5" [hidden]="showMe" >
+                value is true
+            </p>
+
+        <div class="div1">
+                Input String:<input type="text" [(ngModel)]="num" />
+    
+                <div class="mx-5" [ngSwitch]="num">
+                    <div *ngSwitchCase="'1'">One</div>
+                    <div *ngSwitchCase="'2'">Two</div>
+                    <div *ngSwitchCase="'3'">Three</div>
+                    <div *ngSwitchCase="'4'">four</div>
+                    <div *ngSwitchCase="'5'">Five</div>
+                    <div *ngSwitchDefault>Insert value in box</div>
+                </div>
+        </div>
+
+        <!--Built In  Pipes -->
+        <h3>Date: {{toDate | date:'fullDate'}}</h3>
+       <h3> Number Pipe: {{cur | number: '4.2-3'}}</h3>
+       <!--<h3> Percentage Pipe: {{cur | percentage}}</h3>-->
+        <h3>Currency: {{cur | currency:'INR':true:'3.2-2'}}</h3>
+
+        <!-- Custom Pipes-->
+        <h3>{{"Ashiph Sayyad" | convertToSpace:'***'}}</h3>
+
+</div>
